@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maaf Baby Safeeyah ❤️</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(135deg,#ff758c,#ff7eb3);
+      overflow:hidden;
+      padding:20px;
+    }
+
+    /* 🌸 FLOWERS */
+    .flower{
+      position:absolute;
+      top:-10%;
+      font-size:20px;
+      animation:fall linear infinite;
+      opacity:0.8;
+      z-index:0;
+    }
+
+    @keyframes fall{
+      0%{transform:translateY(-10%) rotate(0deg);}
+      100%{transform:translateY(110vh) rotate(360deg);}
+    }
+
+    .card{
+      width:100%;
+      max-width:450px;
+      background:rgba(255,255,255,0.15);
+      backdrop-filter:blur(15px);
+      border-radius:25px;
+      padding:30px;
+      text-align:center;
+      color:white;
+      box-shadow:0 10px 30px rgba(0,0,0,0.2);
+      z-index:2;
+    }
+
+    .heart{
+      font-size:60px;
+      animation:beat 1s infinite;
+    }
+
+    @keyframes beat{
+      0%{transform:scale(1);}
+      50%{transform:scale(1.2);}
+      100%{transform:scale(1);}
+    }
+
+    h1{
+      margin:15px 0;
+      font-size:1.6rem;
+    }
+
+    p{
+      line-height:1.8;
+      font-size:1rem;
+    }
+
+    button{
+      margin-top:20px;
+      padding:14px 25px;
+      border:none;
+      border-radius:50px;
+      font-size:1rem;
+      font-weight:bold;
+      cursor:pointer;
+      background:white;
+      color:#ff4f81;
+      transition:0.3s;
+    }
+
+    button:hover{
+      transform:scale(1.05);
+      background:#ffe5ee;
+    }
+
+    #msg{
+      margin-top:20px;
+      opacity:0;
+      transition:0.5s;
+    }
+
+    #msg.show{
+      opacity:1;
+    }
+
+    /* hide youtube player */
+    #player{
+      width:0;
+      height:0;
+      overflow:hidden;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🌸 FLOWERS ANIMATION -->
+  <script>
+    const flowers = ["🌸","🌷","🌺","💮","💖"];
+
+    function createFlower(){
+      const f = document.createElement("div");
+      f.classList.add("flower");
+      f.innerText = flowers[Math.floor(Math.random()*flowers.length)];
+
+      f.style.left = Math.random()*100 + "vw";
+      f.style.fontSize = (Math.random()*20 + 10) + "px";
+      f.style.animationDuration = (Math.random()*5 + 5) + "s";
+
+      document.body.appendChild(f);
+
+      setTimeout(()=>{ f.remove(); },10000);
+    }
+
+    setInterval(createFlower,300);
+  </script>
+
+  <div class="card">
+
+    <div class="heart">💖</div>
+
+    <h1>Untuk Baby Safeeyah</h1>
+
+    <p>
+      sayang… saya mintak maaf sebab buat baby sedih 🥺<br><br>
+
+       tapi saya betul-betul sayang baby.<br>
+      saya taknak hilang baby dalam hidup saya 💖<br><br>
+
+      saya harap baby boleh maafkan saya dan kita jadi macam dulu balik :)<br><br>
+
+      ikhlas dari saya &lt;3
+    </p>
+
+    <button onclick="forgive()">Maafkan Saya 🥺</button>
+
+    <div id="msg">
+      terima kasih baby… saya janji akan jaga hati baby lepas ni ❤️
+    </div>
+
+    <!-- 🎵 YOUTUBE PLAYER -->
+    <div id="player"></div>
+
+  </div>
+
+  <script>
+    let player;
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        videoId: 'NZGHXy1IAHM',
+        playerVars: {
+          autoplay: 0,
+          controls: 0
+        }
+      });
+    }
+
+    function forgive(){
+
+      document.getElementById("msg").classList.add("show");
+
+      // confetti
+      confetti({
+        particleCount: 200,
+        spread: 120,
+        origin: { y: 0.6 }
+      });
+
+      // play song
+      if(player){
+        player.playVideo();
+      }
+
+      setTimeout(()=>{
+        confetti({ particleCount: 100, spread: 80, origin:{x:0}});
+        confetti({ particleCount: 100, spread: 80, origin:{x:1}});
+      },300);
+    }
+  </script>
+
+</body>
+</html>
